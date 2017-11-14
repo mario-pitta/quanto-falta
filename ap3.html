@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="estilo.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>]
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" type="text/css" href="estilo.css">
+<title>Quanto falta?</title>
+<link rel="shortcut icon" href="homerCRAZY2.ico" />
+</head>
+
+
+<body>
+<div id="corpo">
+<div> <img src="DeVry-Inc.ico" style="width:105px; height:105px; " /></div>
+<br />
+<form id="formteste" name="formteste" action="" method="post">
+  Nota da AP1:
+  <input id="A" name="a" style="width:80px;font-size: 13px" type="number" min="0" max="10" step="0.1" value="0"/>
+  <br />
+  Nota da AP2:
+  <input id="B" name="b"  style="width:80px;font-size: 13px" type="number" min="0" max="10" step="0.1" value="0"/>
+  <br />
+  <br />
+  <input name="voltar" class="btn btn-default" type="button" value="Voltar"  onclick="location.href='index.html'"/>
+  <input id="btnCalc" name="calcular" class="btn btn-default" value="Calcular"/>
+  <input name="limpar" class="btn btn-default" type="reset" value="Limpar"  onclick="javascript:window.location.reload();"/>
+  <br />
+  <br />
+
+</form>
+<h4 id="result"></h4>
+</div>
+<script>
+$("#btnCalc").on( "click", function( event ) {
+	var nota = (parseFloat($("#A").val()) + parseFloat($("#B").val()))*0.3;
+	var total = (5-nota)/0.4;
+	var qtdquest = total/0.4;
+	if(nota>=5){
+		$("#result").html("Você já está aprovado!<br><strong>Parabéns</strong>");
+	}else if(total>10){
+		$("#result").html("Infelizmente não dá mais. <strong>Se esforce mais no semestre que vem!</strong>");
+	}else if(total<=1){
+		$("#result").html("Tu precisa de <strong>"+Math.ceil(total)+" pontos</strong>, isso corresponde a <strong>"+Math.ceil(qtdquest)+"questões.</strong>");
+	}else if(total<=0.4 && qtdquest<=1){
+		$("#result").html("Tu precisa de <strong>"+Math.ceil(total)+" pontos</strong>, isso corresponde a<strong> "+Math.ceil(qtdquest)+" questões.</strong>");
+	}else{
+   		$("#result").html("Tu precisa de <strong>"+Math.ceil(total)+" pontos</strong>, isso corresponde a <strong>"+Math.ceil(qtdquest)+" questões.</strong>");
+	}
+});
+
+
+</script>
+</body>
+</html>
